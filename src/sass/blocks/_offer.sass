@@ -30,6 +30,19 @@
     &__button
         width: 100%
         min-height: 70px
+        margin-bottom: 30px
+    &-info__manager
+        display: flex
+        justify-content: space-between
+        align-items: center
+    &__manager
+        width: 306px
+        line-height: 24px
+    &__call
+        display: block
+        line-height: 24px
+    &__number
+        +bold
 @media ( max-width: 1200px)
     .offer
         background-size: cover
@@ -38,6 +51,10 @@
             margin-bottom: 10px
         &__button
             font-size: 14px
+        &-info__manager
+            display: block
+        &__manager, &__call
+            padding-bottom: 10px
 @media ( max-width: 768px)
     .offer
         background: #fff

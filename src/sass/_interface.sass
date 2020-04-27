@@ -22,6 +22,8 @@ body
     background-color: $main-color
     border: none
     padding: 18px 30px
+    outline: none  
+    +bold
     &:hover
         background-color: lighten($main-color, 10%)
         cursor: pointer
@@ -29,7 +31,6 @@ body
     padding: 90px 0
     &-title
         font-size: 24px
-        +bold
     &-subtitle
         display: block
         font-size: 16px
@@ -38,6 +39,9 @@ body
     padding: 20px 26px
     font-size: 15px
     border-radius: 10px
+    &:focus
+      border: 1px solid $main-color
+      outline: none  
 
 
       
