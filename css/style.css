@@ -458,6 +458,14 @@ body {
   flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+  .price__card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /** Стили для модального окна **/
 .modal {
   position: fixed;
