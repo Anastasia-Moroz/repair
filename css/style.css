@@ -466,6 +466,42 @@ body {
   }
 }
 
+/** Стили для блока 5 шагов до ремонта **/
+.steps__title {
+  margin: auto;
+  margin-bottom: 58px;
+}
+
+.steps__subtitle {
+  margin-bottom: 59px;
+  text-align: center;
+}
+
+.steps-block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.step__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border: 3px solid #ffd200;
+  border-radius: 50%;
+  margin-left: 37px;
+}
+
+.step__text {
+  max-width: 160px;
+  color: #333333;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 30px;
+}
+
 /** Стили для модального окна **/
 .modal {
   position: fixed;
