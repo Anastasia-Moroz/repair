@@ -520,9 +520,24 @@ body {
   font-size: 32px;
 }
 
+.step__arrow {
+  position: relative;
+  left: 170px;
+}
+
+.step__arrow-1 {
+  margin-top: 31px;
+}
+
 @media (max-width: 1200px) {
   .step__text {
     max-width: 146px;
+  }
+  .step__arrow {
+    display: none;
+  }
+  .step__arrow-1 {
+    margin: auto;
   }
 }
 
