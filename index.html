@@ -77,9 +77,9 @@
             <!-- /.section-title -->
             <span class="section-subtitle offer__subtitle">Оставьте заявку на разработку бесплатного дизайн-проекта!</span>
             <!-- /.section-subtitle -->
-            <form action="#" class="form offer__form">
-                <input type="text" class="input offer__input" placeholder="Ваше имя">
-                <input type="tel" class="input offer__input" placeholder="Ваш телефон">
+            <form action="#" class="form offer__form" id="offer-form">
+                <input type="text" name="username" class="input offer__input" placeholder="Ваше имя">
+                <input type="tel" name="phone" class="input offer__input phone" placeholder="Ваш телефон">
                 <button class="button offer__button wow animate__animated animate__heartBeat" data-wow-offset="10">Получить бесплатный дизайн-проект</button>
             </form>
             <!-- /.form offer__form -->
@@ -320,9 +320,10 @@
             <div class="form brif__form">
                 <h3 class="form__title">Оставьте заявку на бесплатный  расчет ремонта по телефону</h3>
                 <span class="form__subtitle">Для этого заполните форму ниже</span>
-                <form action="#">
-                    <input type="text" class="input brif__input" placeholder="Ваше имя">
-                    <input type="tel" class="input brif__input" placeholder="Ваш телефон">
+                <form action="#" id="brif-form">
+                    <input type="text" name="username" class="input brif__input" placeholder="Ваше имя">
+                    <input type="tel" name="phone" class="input brif__input phone" placeholder="Ваш телефон">
+                    <input type="email" name="email" class="input brif__input email" placeholder="Ваш email">
                     <button class="button brif__button wow animate__animated animate__heartBeat" data-wow-offset="10">Рассчитать стоимость</button>
                     <span class="form__description">Мы перезвоним Вам в течение 60 секунд</span>
                 </form>
@@ -356,11 +357,78 @@
 <script src="js/modal.js"></script>
 <script src="js/slick.min.js"></script>
 <script src="js/wow.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.maskedinput.min.js"></script>
 <script>
     /* Инициализация WOW.js */
     new WOW().init();
-    /* Скрипт слайдера */
     $(document).ready(function() {
+        /* Валидация формы */
+        $('#offer-form').validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 15
+                },
+                phone:{
+                    required: true
+                }
+            },
+            messages: {
+                username: {
+                    required: "Укажите Имя",
+                    minlength: jQuery.validator.format("Осталось символов: {0} !"),
+                    maxlength: jQuery.validator.format("Не более {0} символов!")
+                },
+                phone: "Укажите номер телефона"
+            }
+        });
+        $('#brif-form').validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 15
+                },
+                phone:{
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                username: {
+                    required: "Укажите Имя",
+                    minlength: jQuery.validator.format("Осталось символов: {0} !"),
+                    maxlength: jQuery.validator.format("Не более {0} символов!")
+                },
+                phone: "Укажите номер телефона",
+                email: {
+                    required: "Укажите email адрес",
+                    email: "Введите корректный email"
+                }
+            }
+        });
+        /* Маска для телефона */
+        /* $('.phone').mask('+7 (999) 999-99-99',{autoclear: false}); */
+        $.fn.setCursorPosition = function(pos) {
+            if ($(this).get(0).setSelectionRange) {
+                $(this).get(0).setSelectionRange(pos, pos);
+            } else if ($(this).get(0).createTextRange) {
+                var range = $(this).get(0).createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', pos);
+                range.moveStart('character', pos);
+                range.select();
+            }
+            };
+            $(".phone").click(function(){
+            $(this).setCursorPosition(3);
+            }).mask("+7(999) 999-9999", {autoclear: false});
+        /* Скрипт слайдера */
         $('.slider').slick({
             slidesToShow: 3,
             slidesToScroll: 1,

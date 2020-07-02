@@ -101,6 +101,18 @@ body {
   cursor: pointer;
 }
 
+input.error {
+  border: 1px solid #ff0000;
+}
+
+#phone-error, #username-error, #email-error {
+  color: #ff0000;
+  display: block;
+  text-align: center;
+  margin-bottom: 13px;
+  font-size: 14px;
+}
+
 /** Импорт стилей шапки **/
 .navbar {
   padding: 8px 0;
@@ -282,7 +294,8 @@ body {
 
 .offer__input {
   margin-bottom: 30px;
-  width: 248px;
+  width: 510px;
+  display: block;
 }
 
 .offer__input:first-child {
@@ -725,6 +738,7 @@ body {
   }
   .form__subtitle {
     font-size: 14px;
+    margin-bottom: 14px;
   }
   .form__description {
     font-size: 14px;
