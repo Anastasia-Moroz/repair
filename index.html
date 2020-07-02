@@ -364,6 +364,9 @@
     new WOW().init();
     $(document).ready(function() {
         /* Валидация формы */
+        jQuery.validator.addMethod("checkMask", function(value, element) {
+            return /\+\d{1}\(\d{3}\)\d{3}-\d{4}/g.test(value); 
+});
         $('#offer-form').validate({
             rules: {
                 username: {
@@ -372,7 +375,8 @@
                     maxlength: 15
                 },
                 phone:{
-                    required: true
+                    required: true,
+                    checkMask: true
                 }
             },
             messages: {
@@ -381,9 +385,15 @@
                     minlength: jQuery.validator.format("Осталось символов: {0} !"),
                     maxlength: jQuery.validator.format("Не более {0} символов!")
                 },
-                phone: "Укажите номер телефона"
+                phone: {
+                    required: "Укажите номер телефона",
+                    checkMask: "Введите полный номер телефона"
+                }
             }
         });
+        jQuery.validator.addMethod("checkMask", function(value, element) {
+            return /\+\d{1}\(\d{3}\)\d{3}-\d{4}/g.test(value); 
+});
         $('#brif-form').validate({
             rules: {
                 username: {
@@ -391,8 +401,9 @@
                     minlength: 2,
                     maxlength: 15
                 },
-                phone:{
-                    required: true
+                phone: {
+                    required: true,
+                    checkMask: true
                 },
                 email: {
                     required: true,
@@ -405,7 +416,10 @@
                     minlength: jQuery.validator.format("Осталось символов: {0} !"),
                     maxlength: jQuery.validator.format("Не более {0} символов!")
                 },
-                phone: "Укажите номер телефона",
+                phone: {
+                    required: "Укажите номер телефона",
+                    checkMask: "Введите полный номер телефона"
+                },
                 email: {
                     required: "Укажите email адрес",
                     email: "Введите корректный email"
@@ -413,7 +427,6 @@
             }
         });
         /* Маска для телефона */
-        /* $('.phone').mask('+7 (999) 999-99-99',{autoclear: false}); */
         $.fn.setCursorPosition = function(pos) {
             if ($(this).get(0).setSelectionRange) {
                 $(this).get(0).setSelectionRange(pos, pos);
@@ -427,7 +440,7 @@
             };
             $(".phone").click(function(){
             $(this).setCursorPosition(3);
-            }).mask("+7(999) 999-9999", {autoclear: false});
+            }).mask("+7(999) 999-99-99", {autoclear: false});
         /* Скрипт слайдера */
         $('.slider').slick({
             slidesToShow: 3,
