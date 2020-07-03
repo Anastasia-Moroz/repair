@@ -366,7 +366,7 @@
         /* Валидация формы */
         jQuery.validator.addMethod("checkMask", function(value, element) {
             return /\+\d{1}\(\d{3}\)\d{3}-\d{4}/g.test(value); 
-});
+        });
         $('#offer-form').validate({
             rules: {
                 username: {
@@ -382,7 +382,7 @@
             messages: {
                 username: {
                     required: "Укажите Имя",
-                    minlength: jQuery.validator.format("Минимальное количество символов: {0} !"),
+                    minlength: jQuery.validator.format("Осталось символов: {0} !"),
                     maxlength: jQuery.validator.format("Не более {0} символов!")
                 },
                 phone: {
@@ -391,9 +391,6 @@
                 }
             }
         });
-        jQuery.validator.addMethod("checkMask", function(value, element) {
-            return /\+\d{1}\(\d{3}\)\d{3}-\d{4}/g.test(value); 
-});
         $('#brif-form').validate({
             rules: {
                 username: {
@@ -440,7 +437,7 @@
             };
             $(".phone").click(function(){
             $(this).setCursorPosition(3);
-            }).mask("+7(999) 999-99-99", {autoclear: false});
+            }).mask("+7(999)999-9999", {autoclear: false});
         /* Скрипт слайдера */
         $('.slider').slick({
             slidesToShow: 3,
